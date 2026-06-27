@@ -1,0 +1,13 @@
+# Ignore python cache files
+__pycache__/
+*.pyc
+
+# Ignore environment files that contain passwords
+.env
+
+# Ignore local datasets or generated reports if they get too huge
+students_report.csv
+
+# Ignore virtual environments if you created one
+venv/
+.venv/

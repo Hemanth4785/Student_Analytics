@@ -90,5 +90,10 @@ def export_report():
     conn.close()
     return redirect(url_for('dashboard'))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    # 1. Look for the port environment variable Render sets, default to 5000 locally
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    
+    # 2. Bind the app to 0.0.0.0 so it accepts outside cloud traffic
+    app.run(host="0.0.0.0", port=port)

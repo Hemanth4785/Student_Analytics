@@ -8,11 +8,9 @@ app = Flask(__name__)
 
 # database connection
 def get_db_connection():
-    # Render will look for this 'DATABASE_URL' variable in the cloud
-    db_url = os.environ.get("DATABASE_URL")
+    db_url = os.environ.get("mysql://X9FotYhjvHf7oBo.root:<PASSWORD>@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/sys") #key
     
     if db_url:
-        # 1. CLOUD CONNECTION (Runs on Render)
         url = urlparse.urlparse(db_url)
         return mysql.connector.connect(
             host=url.hostname,
@@ -22,7 +20,6 @@ def get_db_connection():
             port=url.port or 3306
         )
     else:
-        # 2. LOCAL BACKUP (Runs on your laptop automatically)
         return mysql.connector.connect(
             host="localhost",
             user="root",
